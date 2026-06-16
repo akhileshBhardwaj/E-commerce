@@ -8,10 +8,11 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <main >
+      <main>
         <Hero />
-        <ShopWithUs/>
-        <NewArrival/>
+        <ShopWithUs />
+        <NewArrival />
+        <Features />
       </main>
     </>
   );

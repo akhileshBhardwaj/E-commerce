@@ -1,4 +1,4 @@
-const Product = [
+export const Product = [
   {
     id: 101,
     name: "MacBook Air M4 Midnight",
