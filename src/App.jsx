@@ -4,6 +4,7 @@ import Hero from "./component/Hero";
 import Features from "./component/Features";
 import ShopWithUs from "./component/ShopWithUs";
 import NewArrival from "./component/NewArrival";
+import DiscountTwoPart from "./component/DiscountTwoPart";
 const App = () => {
   return (
     <>
@@ -11,8 +12,10 @@ const App = () => {
       <main>
         <Hero />
         <ShopWithUs />
-        <NewArrival />
+
         <Features />
+        <DiscountTwoPart />
+        <NewArrival />
       </main>
     </>
   );
