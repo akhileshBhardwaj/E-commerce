@@ -27,7 +27,7 @@ import product26 from "../images/product-thumb-26.png";
 import product27 from "../images/product-thumb-27.png";
 import product28 from "../images/product-thumb-28.png";
 
-export const Product = [
+export  const Product = [
   {
     id: 101,
     name: "Fresh Tomato",

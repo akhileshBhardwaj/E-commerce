@@ -5,6 +5,7 @@ import Product from "./pages/Product";
 import Testimonial from "./pages/Testimonial";
 import AboutUs from "./pages/AboutUs";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const route = createBrowserRouter([
@@ -31,6 +32,10 @@ const App = () => {
         {
           path: "about",
           element: <AboutUs />,
+        },
+        {
+          path: "cart",
+          element: <Cart />,
         },
       ],
     },

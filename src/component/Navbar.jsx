@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { IoMenuOutline } from "react-icons/io5";
+import { ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -55,8 +56,22 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Desktop Button */}
-          <div className="hidden lg:block">
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            {/* Cart UI */}
+            <NavLink
+              to="/cart"
+              className="relative p-3 rounded-xl border border-gray-200 hover:bg-gray-100 transition-all duration-300"
+            >
+              <ShoppingCart size={22} />
+
+              {/* Dummy Badge */}
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-medium min-w-[20px] h-5 flex items-center justify-center rounded-full">
+                3
+              </span>
+            </NavLink>
+
+            {/* Login Button */}
             <button className="px-5 py-2 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 hover:scale-105 transition-all duration-300">
               Login
             </button>
@@ -120,7 +135,24 @@ const Navbar = () => {
             </li>
           ))}
 
-          <button className="mt-4 py-3 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-all duration-300">
+          {/* Mobile Cart UI */}
+          <NavLink
+            to="/cart"
+            onClick={() => setMenu(false)}
+            className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all duration-300"
+          >
+            <div className="flex items-center gap-3">
+              <ShoppingCart size={20} />
+              <span className="font-medium">Cart</span>
+            </div>
+
+            <span className="bg-red-500 text-white text-xs font-medium min-w-[22px] h-[22px] flex items-center justify-center rounded-full">
+              3
+            </span>
+          </NavLink>
+
+          {/* Login Button */}
+          <button className="mt-2 py-3 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-all duration-300">
             Login
           </button>
         </ul>

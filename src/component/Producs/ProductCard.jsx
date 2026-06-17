@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Heart, ShoppingCart, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 const ProductCard = ({ item }) => {
+  const { addToCart } = useCart();
+
   return (
     <div className="group relative bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
       {/* Discount Badge */}
@@ -66,7 +69,12 @@ const ProductCard = ({ item }) => {
         </div>
 
         {/* Button */}
-        <button className="w-full mt-5 flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition-all duration-300">
+        <button
+          onClick={() => {
+            addToCart(item);
+          }}
+          className="w-full mt-5 flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-medium hover:bg-green-700 transition-all duration-300"
+        >
           <ShoppingCart size={18} />
           Add To Cart
         </button>
