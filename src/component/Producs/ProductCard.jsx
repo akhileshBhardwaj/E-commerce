@@ -1,5 +1,6 @@
 import React from "react";
 import { Heart, ShoppingCart, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   return (
@@ -14,14 +15,16 @@ const ProductCard = ({ item }) => {
         <Heart size={18} />
       </button>
 
-      {/* Product Image */}
-      <div className="bg-gradient-to-b from-green-50 to-white overflow-hidden">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-56 object-contain p-5 transition-transform duration-500 group-hover:scale-110"
-        />
-      </div>
+      <Link to={`/product/${item.id}`}>
+        {/* Product Image */}
+        <div className="bg-gradient-to-b from-green-50 to-white overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-56 object-contain p-5 transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+      </Link>
 
       {/* Content */}
       <div className="p-5">
