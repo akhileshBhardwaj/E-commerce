@@ -5,6 +5,7 @@ import Features from "./component/Features";
 import ShopWithUs from "./component/ShopWithUs";
 import NewArrival from "./component/NewArrival";
 import DiscountTwoPart from "./component/DiscountTwoPart";
+import Footer from "./component/Footer";
 const App = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const App = () => {
         <DiscountTwoPart />
         <NewArrival />
       </main>
+      <Footer />
     </>
   );
 };
