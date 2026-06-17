@@ -6,108 +6,126 @@ import { IoMenuOutline } from "react-icons/io5";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
+  const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/product", label: "Products" },
+    { path: "/testimonial", label: "Testimonials" },
+    { path: "/about", label: "About Us" },
+  ];
+
   return (
     <>
-      <nav className="h-16 flex items-center justify-between px-3 py-2 bg-gray-900 text-white fixed top-0 left-0 w-full z-50">
-        {/* Logo */}
-        <div>
-          <h3 className="text-xl font-bold">
-            <span className="text-emerald-400">AK</span>Store
-          </h3>
-        </div>
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/80 border-b border-gray-200 shadow-sm">
+        <div className="w-[90%] mx-auto h-16 flex items-center justify-between">
+          {/* Logo */}
+          <div className="cursor-pointer">
+            <h2 className="text-2xl font-bold transition duration-300 hover:scale-105">
+              <span className="text-emerald-500">AK</span>
+              <span className="text-gray-800">Store</span>
+            </h2>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:block">
-          <ul className="flex items-center justify-center gap-x-5">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/product">Product</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/testimonial">Testimonial</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/about">About Us</NavLink>
-            </li>
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `relative font-medium transition-all duration-300
+                    ${
+                      isActive
+                        ? "text-emerald-500"
+                        : "text-gray-700 hover:text-emerald-500"
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <>
+                      {link.label}
+                      <span
+                        className={`absolute left-0 -bottom-1 h-[2px] bg-emerald-500 transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0"
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
+              </li>
+            ))}
           </ul>
-        </div>
 
-        {/* Desktop Login */}
-        <div className="hidden lg:block">
-          <button className="py-2 px-4 border border-emerald-500 rounded hover:bg-emerald-500 transition">
-            Log in
-          </button>
-        </div>
+          {/* Desktop Button */}
+          <div className="hidden lg:block">
+            <button className="px-5 py-2 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 hover:scale-105 transition duration-300">
+              Login
+            </button>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden">
+          {/* Mobile Button */}
           <button
             onClick={() => setMenu(true)}
-            className="py-2 px-4 border border-emerald-500 rounded text-white"
+            className="lg:hidden text-3xl text-gray-700"
           >
-            <IoMenuOutline size={22} />
+            <IoMenuOutline />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 right-0 h-screen w-[280px] bg-white shadow-2xl z-[60]
+        transition-transform duration-300 ease-in-out
+        ${menu ? "translate-x-0" : "translate-x-full"}
+        lg:hidden`}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-5 border-b">
+          <h2 className="text-xl font-bold">
+            <span className="text-emerald-500">AK</span>Store
+          </h2>
+
+          <button
+            onClick={() => setMenu(false)}
+            className="text-2xl text-gray-700"
+          >
+            <RxCross2 />
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {menu && (
-          <div className="fixed inset-0 bg-gray-900 lg:hidden flex flex-col">
-            {/* Top Bar */}
-            <div className="flex items-center justify-between px-3 py-4 border-b border-gray-700">
-              <h3 className="text-xl font-bold">
-                <span className="text-emerald-400">AK</span>Store
-              </h3>
-
-              <button
+        {/* Links */}
+        <ul className="flex flex-col p-5 gap-6">
+          {navLinks.map((link) => (
+            <li key={link.path}>
+              <NavLink
+                to={link.path}
                 onClick={() => setMenu(false)}
-                className="py-2 px-4 border border-emerald-500 rounded text-white"
+                className={({ isActive }) =>
+                  `block text-lg font-medium transition duration-300 ${
+                    isActive
+                      ? "text-emerald-500"
+                      : "text-gray-700 hover:text-emerald-500"
+                  }`
+                }
               >
-                <RxCross2 size={20} />
-              </button>
-            </div>
+                {link.label}
+              </NavLink>
+            </li>
+          ))}
 
-            {/* Mobile Links */}
-            <div className="flex-1 flex items-center justify-center">
-              <ul className="flex flex-col items-center gap-y-8 text-lg font-medium">
-                <li>
-                  <NavLink to="/" onClick={() => setMenu(false)}>
-                    Home
-                  </NavLink>
-                </li>
+          <button className="mt-5 py-3 rounded-lg bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition">
+            Login
+          </button>
+        </ul>
+      </div>
 
-                <li>
-                  <NavLink to="/product" onClick={() => setMenu(false)}>
-                    Product
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink to="/testimonial" onClick={() => setMenu(false)}>
-                    Testimonial
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink to="/about" onClick={() => setMenu(false)}>
-                    About Us
-                  </NavLink>
-                </li>
-
-                <li>
-                  <button className="py-2 px-6 border border-emerald-500 rounded hover:bg-emerald-500 transition">
-                    Log in
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        )}
-      </nav>
+      {/* Overlay */}
+      {menu && (
+        <div
+          onClick={() => setMenu(false)}
+          className="fixed inset-0 bg-black/40 z-50 lg:hidden"
+        />
+      )}
     </>
   );
 };
