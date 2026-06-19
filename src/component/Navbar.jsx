@@ -149,7 +149,7 @@ const Navbar = () => {
             </div>
 
             <span className="bg-red-500 text-white text-xs font-medium min-w-[22px] h-[22px] flex items-center justify-center rounded-full">
-              3
+              {cartCounter}
             </span>
           </NavLink>
 
