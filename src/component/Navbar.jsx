@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { IoMenuOutline } from "react-icons/io5";
 import { ShoppingCart } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
+  const { cartCounter } = useCart();
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -67,7 +69,7 @@ const Navbar = () => {
 
               {/* Dummy Badge */}
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-medium min-w-[20px] h-5 flex items-center justify-center rounded-full">
-                3
+                {cartCounter}
               </span>
             </NavLink>
 

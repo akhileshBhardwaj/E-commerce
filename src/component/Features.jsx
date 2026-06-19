@@ -1,7 +1,9 @@
 import React from "react";
 import { Product } from "../data/Product";
+import { useCart } from "../context/CartContext";
 
 const Features = () => {
+  const { addToCart } = useCart();
   return (
     <section className="w-[90%] mx-auto py-12">
       {/* Heading */}
@@ -52,7 +54,10 @@ const Features = () => {
                 </p>
               </div>
 
-              <button className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-all duration-300">
+              <button
+                onClick={() => addToCart(item)}
+                className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-all duration-300"
+              >
                 Add to Cart
               </button>
             </div>
